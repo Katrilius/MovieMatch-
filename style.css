@@ -362,3 +362,19 @@ button.action-btn:hover {
 #whereToWatch, #whereToRent {
     margin-top: 20px;
 }
+
+/* Fix button text color */
+button.action-btn, .action-btn a {
+    color: #000000; /* Set the text color to black */
+    text-decoration: none; /* Remove any underlines from links */
+}
+
+button.action-btn:hover, .action-btn a:hover {
+    color: #000000; /* Ensure the color stays black even on hover */
+}
+
+/* This will prevent any links inside the buttons from turning blue */
+button.action-btn a {
+    color: inherit; /* Inherit the black color from the parent button */
+    text-decoration: none; /* No underline for links */
+}
