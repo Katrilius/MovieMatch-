@@ -5,12 +5,20 @@ body {
     padding: 0;
     background-color: #000000; /* Black background */
     color: #ffffff; /* White text for contrast */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    width: 100%; /* Full width */
+}
+
+html, body {
+    max-width: 100%; /* Prevent any horizontal overflow */
+    overflow-x: hidden; /* No horizontal scroll allowed */
 }
 
 .container {
     width: 100%;
+    max-width: 100vw; /* Ensure it never exceeds the viewport width */
     padding: 20px;
+    box-sizing: border-box; /* Include padding in element width */
 }
 
 h1, h2 {
@@ -21,13 +29,16 @@ form {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #searchInput {
     width: 80%;
+    max-width: 400px; /* Limit the width on larger screens */
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 /* Button group styling for symmetry */
@@ -37,14 +48,16 @@ form {
     gap: 10px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%; /* Ensure buttons don't overflow */
 }
 
 .action-btn {
-    padding: 10px 15px; /* Increase padding for a larger button feel */
-    font-size: 14px; /* Slightly increase the font size */
-    background-color: #ffcc00; /* Keep the yellow background */
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #ffcc00;
     border: none;
-    border-radius: 25px; /* Slightly larger rounded corners */
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s;
     text-align: center;
@@ -60,6 +73,7 @@ form {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
+    max-width: 100%; /* Prevent horizontal scroll */
 }
 
 .movie-card {
