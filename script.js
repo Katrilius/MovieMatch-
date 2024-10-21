@@ -1,4 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDzQTrjveUKXhXRIUOdufvkbWc8JTwoaoE",
+  authDomain: "moviematch-72d38.firebaseapp.com",
+  projectId: "moviematch-72d38",
+  storageBucket: "moviematch-72d38.appspot.com",
+  messagingSenderId: "650720713776",
+  appId: "1:650720713776:web:d224b4e661e45dd327a1f5",
+  measurementId: "G-82ZR379TMZ"
+};
+
+// Initialize Firebase and Firestore
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener('DOMContentLoaded', async function () {
     const searchInput = document.getElementById('searchInput');
     const resultsContainer = document.getElementById('searchResults');
     const movieDetailsModal = document.getElementById('movieDetailsModal');
@@ -10,8 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const movieMatchButton = document.getElementById('viewMovieMatch');
     const backToSearchButton = document.getElementById('backToSearch');
 
-    let mulleMovieList = JSON.parse(localStorage.getItem('mulleMovies')) || [];
-    let carmenMovieList = JSON.parse(localStorage.getItem('carmenMovies')) || [];
+    // Fetch Mulle's and Carmen's movie lists from Firestore
+    let mulleMovieList = await fetchMovieList('mulleMovies');
+    let carmenMovieList = await fetchMovieList('carmenMovies');
 
     // Exclude adult content based on keywords
     const adultKeywords = ['porn', 'porno', 'xxx', 'adult', 'erotic', 'sex'];
@@ -93,17 +112,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return movieCard;
     }
 
-    // Toggle movie in the list (add or remove)
-    function toggleMovieInList(movie, list, storageKey, button, listName) {
+    // Toggle movie in the list (add or remove) and sync with Firestore
+    async function toggleMovieInList(movie, list, collectionName, button, listName) {
         const movieIndex = list.findIndex(m => m.id === movie.id);
         
         if (movieIndex === -1) {
             list.push(movie);
-            localStorage.setItem(storageKey, JSON.stringify(list));
+            await addMovieToFirestore(collectionName, movie);
             updateButtonToOnList(button, listName);
         } else {
             list.splice(movieIndex, 1);
-            localStorage.setItem(storageKey, JSON.stringify(list));
+            await removeMovieFromFirestore(collectionName, movie.id);
             resetButtonToAddList(button, listName);
         }
     }
@@ -266,6 +285,35 @@ document.addEventListener('DOMContentLoaded', function () {
             movieDetailsModal.style.display = 'none';
         }
     });
+
+    // Fetch movie list from Firestore
+    async function fetchMovieList(collectionName) {
+        const list = [];
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        querySnapshot.forEach(doc => {
+            list.push(doc.data());
+        });
+        return list;
+    }
+
+    // Add movie to Firestore
+    async function addMovieToFirestore(collectionName, movie) {
+        try {
+            await addDoc(collection(db, collectionName), movie);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+
+    // Remove movie from Firestore
+    async function removeMovieFromFirestore(collectionName, movieId) {
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        querySnapshot.forEach(async (docSnapshot) => {
+            if (docSnapshot.data().id === movieId) {
+                await deleteDoc(doc(db, collectionName, docSnapshot.id));
+            }
+        });
+    }
 
     // Display movie list
     function displayMovieList(movieList) {
