@@ -1,0 +1,349 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text for contrast */
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/* Button group styling for symmetry */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 10px 15px; /* Increase padding for a larger button feel */
+    font-size: 14px; /* Slightly increase the font size */
+    background-color: #ffcc00; /* Keep the yellow background */
+    border: none;
+    border-radius: 25px; /* Slightly larger rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background-color: #ffaa00;
+}
+
+/* Movie grid styling */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.movie-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for visual appeal */
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Rating circle on movie image */
+.movie-card .rating {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 12px;
+    width: 35px;
+    text-align: center;
+}
+
+/* Button container for movie card */
+.movie-card .overlay-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+/* Ensure buttons are compact and aligned */
+.movie-card .overlay-buttons button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Always show buttons on mobile */
+@media only screen and (max-width: 768px) {
+    .movie-card .overlay-buttons {
+        display: block;
+    }
+}
+
+/* Hover effect for desktop */
+.movie-card:hover .overlay-buttons {
+    display: flex;
+}
+
+/* Popcorn Emoji Animation */
+#popcornEmoji {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    animation: none;
+    z-index: 9999;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+}
+
+footer img {
+    width: 100px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background with 50% opacity */
+    border: 2px solid #ffcc00; /* Yellow border */
+    border-radius: 10px;
+    padding: 20px;
+    width: 85%; /* Reduce width a bit */
+    max-width: 750px; /* Set a slightly smaller max width */
+    max-height: 80vh; /* Set maximum height relative to the viewport height (vh) */
+    overflow-y: auto; /* Add scrolling if content overflows */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+}
+
+.poster-img {
+    max-width: 50%; /* Ensure the image takes only half the width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add some space below the image */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Button Group Styles */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Align buttons horizontally with equal spacing */
+    margin-top: 20px;
+}
+
+button.action-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    flex: 1;
+    margin: 5px;
+}
+
+button.action-btn:hover {
+    background-color: #ffaa00;
+}
+
+/* Watch/Rent logos aligned */
+.streaming-icons, .rental-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.streaming-icons img, .rental-icons img {
+    width: 40px;
+    height: auto;
+    border-radius: 5px;
+}
+
+button.action-btn {
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+button.action-btn:hover {
+    background-color: #ffaa00;
+}
+
+/* Responsive layout */
+@media only screen and (max-width: 768px) {
+    /* Adjust modal for smaller screens */
+    .modal-content {
+        width: 90%; /* Keep it 90% for mobile */
+        max-width: 320px; /* Max width for smaller screens */
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Resize movie cards for mobile */
+    }
+}
+
+/* Trailer modal styles */
+.trailer-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with 80% opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 1002; /* Ensure it's above the movie details modal */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.trailer-modal-content {
+    width: 90%;
+    max-width: 800px; /* Limit the size of the modal */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    border: 2px solid #ffcc00; /* Yellow border */
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); /* Soft shadow effect */
+}
+
+.trailer-modal-content iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 10px; /* Keep the rounded corners for consistency */
+    border: none;
+}
+
+.trailer-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Where to Watch and Where to Rent section */
+#whereToWatch img, #whereToRent img {
+    margin: 5px;
+    border-radius: 5px;
+    width: 45px;
+    height: auto;
+    display: inline-block; /* Logos are aligned inline */
+}
+
+#whereToWatch, #whereToRent {
+    margin-top: 20px;
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Take up the full width to align with other content */
+    padding-left: 20px; /* Add padding to match the text */
+}
+
+/* Force "Where to Watch" and "Where to Rent" text to be block elements */
+#whereToWatch strong, #whereToRent strong {
+    display: block;
+    font-size: 16px; /* Larger text for emphasis */
+    font-weight: bold;
+    margin-bottom: 10px; /* Adds space below the heading */
+    color: #ffffff; /* Optional: Change to white for contrast */
+}
+
+/* Adjust Movie Poster size */
+.poster-img {
+    width: 60%; /* Reduce the size of the poster */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px; /* Add space below the poster */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add some spacing between sections for better readability */
+#whereToWatch, #whereToRent {
+    margin-top: 20px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulle Mulle Musse Bio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button id="searchTab" class="tab active">Search Movies</button>
+        <button id="recommendationsTab" class="tab">Recommended Movies</button>
+    </div>
+
+    <!-- Main Search Page -->
+    <div id="mainPage" class="container">
+        <h1>🎬 Mulle Mulle Musse Bio</h1>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search movies..." autocomplete="off"/>
+        </form>
+
+        <!-- Button group to display buttons side by side -->
+        <div class="button-group">
+            <button id="viewMulleList" class="action-btn">Mulle's List</button>
+            <button id="viewMovieMatch" class="action-btn">Movie Match</button>
+            <button id="viewCarmenList" class="action-btn">Carmen's List</button>
+            <button id="viewCombinedList" class="action-btn">Combined List</button> <!-- Combined List Button -->
+        </div>
+
+        <!-- Back to Search Button -->
+        <button id="backToSearch" class="action-btn" style="display:none;">Back to Search</button>
+
+        <div id="searchResults" class="movie-grid"></div>
+        <div id="popcornEmoji" style="display:none;">🍿</div>
+    </div>
+
+    <!-- Modal for movie details -->
+    <div id="movieDetailsModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="movieDetails"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Footer with TMDb attribution -->
+    <footer>
+        <p>
+            Movie data and images sourced from 
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
+                <img src="https://www.themoviedb.org/assets/2/v4/logos/stacked-blue-f9f8f756b37f6fa3c9a2e90aa21b0deb8c9ae18218b75e16957845c4fda2955b.svg" 
+                     alt="TMDb Logo" 
+                     style="width: 100px;" />
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
