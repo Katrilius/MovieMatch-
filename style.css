@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #000000; /* Black background */
     color: #ffffff; /* White text for contrast */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
