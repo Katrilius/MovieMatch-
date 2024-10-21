@@ -45,6 +45,32 @@
 
     <script src="script.js"></script>
 
+    <!-- Firebase Integration -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDzQTrjveUKXhXRIUOdufvkbWc8JTwoaoE",
+        authDomain: "moviematch-72d38.firebaseapp.com",
+        projectId: "moviematch-72d38",
+        storageBucket: "moviematch-72d38.appspot.com",
+        messagingSenderId: "650720713776",
+        appId: "1:650720713776:web:d224b4e661e45dd327a1f5",
+        measurementId: "G-82ZR379TMZ"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+
+      // Now `db` is the Firestore database that you can use in your `script.js` to save and retrieve data
+    </script>
+
     <!-- Footer with TMDb attribution -->
     <footer>
         <p>
